@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+}
+
+:root {
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+  --red: hsl(0, 100%, 66%);
+  --light-grayish-violet: hsl(270, 3%, 87%);
+  --dark-grayish-violet: hsl(279, 6%, 55%);
+  --very-dark-violet: hsl(278, 68%, 11%);
+  --linear-gradient-begin: hsl(249, 99%, 64%);
+  --linear-gradient-end: hsl(278, 94%, 30%);
+}
+
+#root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* overflow: hidden;
+  height: 100vh; */
+}
+
+html {
+  font-size: 18px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+input,
+button,
+textarea {
+  outline: none;
+  border: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.aside {
+  width: 30%;
+  height: 100vh;
+  background: url(../public/images/bg-main-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.card {
+  width: 20rem;
+  height: 11rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  position: absolute;
+}
+
+.card__front__container {
+  background: url(../public/images/bg-card-front.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 50%;
+  top: 17%;
+  display: flex;
+
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card__front__container .card__front__info__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  color: var(--white);
+}
+
+.card__front__container .card__front__nums__container {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+}
+
+.card__front__container .user__and__expire__date__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.card__back__container {
+  background: url(../public/images/bg-card-back.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 70%;
+  top: 47%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--white);
+}
+
+.card__back__container p {
+  text-align: right;
+  margin-right: 2.4rem;
+  font-size: 0.8rem;
+}
+
+/* main */
+
+.main__container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form__card__info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.date__time__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+form label {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--light-grayish-violet);
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+form button {
+  height: 2.3rem;
+  cursor: pointer;
+  background-color: var(--very-dark-violet);
+  color: var(--white);
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+input::placeholder {
+  color: var(--light-grayish-violet);
+}
+
+input:focus {
+  border-color: var(--linear-gradient-end);
+}
+
+span.validation {
+  font-size: 0.6rem;
+  color: var(--red);
+  text-transform: lowercase;
+}
+
+input.validation {
+  border-color: var(--red);
+}
+
+@media (max-width: 375px) {
+  html {
+    font-size: 16px;
+  }
+  #root {
+    display: block;
+  }
+  .aside {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column-reverse;
+    background-position: center;
+  }
+
+  .card {
+    width: 83%;
+    height: 70%;
+    background-position: center;
+    /* position: relative; */
+  }
+
+  .card__front__container {
+    top: 43%;
+    left: 4%;
+    z-index: 10;
+  }
+  .card__back__container {
+    top: 5%;
+    left: 13%;
+  }
+
+  .main__container {
+    width: 100%;
+    /* margin-top: calc(100% - 45vh); */
+    margin-top: 12vh;
+  }
+
+  form {
+    width: 90%;
+  }
+}
