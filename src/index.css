@@ -75,7 +75,7 @@ input::-webkit-inner-spin-button {
   background-repeat: no-repeat;
   background-size: cover;
   left: 50%;
-  top: 17%;
+  top: 15%;
   display: flex;
 
   padding: 1rem;
@@ -112,7 +112,7 @@ input::-webkit-inner-spin-button {
   background-repeat: no-repeat;
   background-size: cover;
   left: 70%;
-  top: 47%;
+  bottom: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
