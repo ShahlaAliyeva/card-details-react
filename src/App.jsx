@@ -31,7 +31,7 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!fullname && !cardNumber && !month && !year && !secNum) return;
+    if (!fullname || !cardNumber || !month || !year || !secNum) return;
     setFullname("");
     setCardNumber("");
     setMonth("");
@@ -161,7 +161,7 @@ function Form({
       <div>
         <label htmlFor="fullName">Cardholder name</label>
         <input
-          required
+          // required
           className={fullname ? "" : "validation"}
           value={fullname}
           onChange={onSetName}
@@ -185,7 +185,7 @@ function Form({
           exp. date (mm/yy)
           <div className="date__time__container">
             <input
-              required
+              // required
               className={month ? "" : "validation"}
               type="number"
               placeholder="mm"
@@ -197,7 +197,7 @@ function Form({
               onChange={(e) => onSetMonth(Number(e.target.value))}
             />
             <input
-              required
+              // required
               className={year ? "" : "validation"}
               type="number"
               placeholder="yy"
@@ -214,7 +214,7 @@ function Form({
         <label htmlFor="cvc">
           cvc
           <input
-            required
+            // required
             className={secNum ? "" : "validation"}
             type="number"
             id="cvc"
