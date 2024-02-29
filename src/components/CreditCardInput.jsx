@@ -5,6 +5,7 @@ function CreditCardInput({ cardNumber, onSetNumber }) {
     <>
       <label htmlFor="cardNumber">Card number</label>
       <InputMask
+      id="cardNumber"
         className={cardNumber ? "" : "validation"}
         mask="9999 9999 9999 9999"
         placeholder="0000 0000 0000 0000"
