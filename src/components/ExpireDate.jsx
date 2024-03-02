@@ -3,9 +3,9 @@ function ExpireDate({ children, year, month }) {
     <label htmlFor="expDate">
       exp. date (mm/yy)
       <div className="date__time__container">{children}</div>
-      {month && year ? null : (
-        <span className="validation">please write your expire date</span>
-      )}
+      <span className={year && month ? "no_validate" : "validation"}>
+        please write your expire date
+      </span>
     </label>
   );
 }

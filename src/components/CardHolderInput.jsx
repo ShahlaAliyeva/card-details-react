@@ -11,9 +11,9 @@ function CardHolderInput({ fullname, onSetName }) {
         id="fullName"
         placeholder="e. g. Jane Apleseed"
       />
-      {fullname ? null : (
-        <span className="validation">please write your name</span>
-      )}
+      <span className={fullname ? "no_validate" : "validation"}>
+        please write your name
+      </span>
     </>
   );
 }

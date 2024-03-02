@@ -1,13 +1,13 @@
 import React from "react";
 
-function SecureKeyContainer({ children , secNum}) {
+function SecureKeyContainer({ children, secNum }) {
   return (
     <label htmlFor="cvc">
       cvc
       {children}
-      {secNum ? null : (
-        <span className="validation">please write your name</span>
-      )}
+      <span className={secNum ? "no_validate" : "validation"}>
+        please write your name
+      </span>
     </label>
   );
 }

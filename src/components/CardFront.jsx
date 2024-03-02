@@ -1,8 +1,10 @@
+import cardLogo from "../assets/images/card-logo.svg";
+
 function CardFront({ fullname, cardNumber, month, year }) {
   return (
     <div className="card card__front__container">
       <div className="card__front__logo__container">
-        <img src="./images/card-logo.svg" alt="card-logo" />
+        <img src={cardLogo} alt="card-logo" />
       </div>
 
       <div className="card__front__info__container">

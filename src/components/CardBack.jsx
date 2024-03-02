@@ -1,5 +1,3 @@
-import { PropTypes } from "prop-types";
-
 function CardBack({ secNum }) {
   return (
     <div className="card card__back__container">
@@ -8,8 +6,4 @@ function CardBack({ secNum }) {
   );
 }
 
-export default CardBack
-
-CardBack.propTypes = {
-  secNum: PropTypes.number
-}
+export default CardBack;

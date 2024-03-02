@@ -5,16 +5,17 @@ function CreditCardInput({ cardNumber, onSetNumber }) {
     <>
       <label htmlFor="cardNumber">Card number</label>
       <InputMask
-      id="cardNumber"
+        id="cardNumber"
         className={cardNumber ? "" : "validation"}
         mask="9999 9999 9999 9999"
         placeholder="0000 0000 0000 0000"
         value={cardNumber}
         onChange={onSetNumber}
       />
-      {cardNumber ? null : (
-        <span className="validation">please write your card number</span>
-      )}
+
+      <span className={cardNumber ? "no_validate" : "validation"}>
+        please write your card number
+      </span>
     </>
   );
 }
