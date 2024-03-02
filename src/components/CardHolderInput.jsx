@@ -1,17 +1,17 @@
-function CardHolderInput({ fullname, onSetName }) {
+function CardHolderInput({ fullname, onSetName, isSubmited }) {
   return (
     <>
       <label htmlFor="fullName">Cardholder name</label>
       <input
         // required
-        className={fullname ? "" : "validation"}
+        className={!isSubmited || fullname ? "" : "validation"}
         value={fullname}
         onChange={onSetName}
         type="text"
         id="fullName"
         placeholder="e. g. Jane Apleseed"
       />
-      <span className={fullname ? "no_validate" : "validation"}>
+      <span className={!isSubmited || fullname ? "no_validate" : "validation"}>
         please write your name
       </span>
     </>

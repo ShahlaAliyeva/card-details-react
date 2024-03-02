@@ -1,10 +1,10 @@
 import React from "react";
 
-function SecureKey({ secNum, onSetSecNum }) {
+function SecureKey({ secNum, onSetSecNum, isSubmited}) {
   return (
     <input
       // required
-      className={secNum ? "" : "validation"}
+      className={!isSubmited || secNum ? "" : "validation"}
       type="number"
       id="cvc"
       value={secNum}

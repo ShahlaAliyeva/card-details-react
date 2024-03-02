@@ -1,8 +1,8 @@
-function YearInput({year, onSetYear}) {
+function YearInput({year, onSetYear, isSubmited}) {
   return (
     <input
       // required
-      className={year ? "" : "validation"}
+      className={!isSubmited || year ? "" : "validation"}
       type="number"
       placeholder="yy"
       name="exp-date"

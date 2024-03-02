@@ -1,8 +1,8 @@
-function MonthInput({month, onSetMonth}) {
+function MonthInput({ month, onSetMonth, isSubmited }) {
   return (
     <input
       // required
-      className={month ? "" : "validation"}
+      className={!isSubmited || month ? "" : "validation"}
       type="number"
       placeholder="mm"
       max={12}
@@ -15,5 +15,4 @@ function MonthInput({month, onSetMonth}) {
   );
 }
 
-
-export default MonthInput
+export default MonthInput;

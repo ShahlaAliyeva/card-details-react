@@ -42,12 +42,15 @@ function MainPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsSubmitted(true);
     if (!fullname || !cardNumber || !month || !year || !secNum) return;
+
     setFullname("");
     setCardNumber("");
     setMonth("");
     setYear("");
     setSecNum("");
+    setIsSubmitted(false);
   }
 
   return (
@@ -64,13 +67,18 @@ function MainPage() {
       <Main>
         <Form onSetSubmit={handleSubmit}>
           <InputLayout>
-            <CardHolderInput onSetName={handleFullname} fullname={fullname} />
+            <CardHolderInput
+              onSetName={handleFullname}
+              fullname={fullname}
+              isSubmited={isSubmited}
+            />
           </InputLayout>
 
           <InputLayout>
             <CreditCardInput
               cardNumber={cardNumber}
               onSetNumber={handleCardNumber}
+              isSubmited={isSubmited}
             />
           </InputLayout>
 
@@ -82,6 +90,7 @@ function MainPage() {
               onSetYear={handleSetYear}
               secNum={secNum}
               onSetSecNum={handleSetSecNum}
+              isSubmited={isSubmited}
             />
           </InputLayout>
         </Form>

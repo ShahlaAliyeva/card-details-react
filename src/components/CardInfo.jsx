@@ -4,16 +4,32 @@ import SecureKey from "./SecureKey";
 import SecureKeyContainer from "./SecureKeyContainer";
 import YearInput from "./YearInput";
 
-function CardInfo({ onSetMonth, month, year, onSetYear, secNum, onSetSecNum }) {
+function CardInfo({
+  onSetMonth,
+  month,
+  year,
+  onSetYear,
+  secNum,
+  onSetSecNum,
+  isSubmited,
+}) {
   return (
     <>
-      <ExpireDate month={month} year={year}>
-        <MonthInput month={month} onSetMonth={onSetMonth} />
-        <YearInput year={year} onSetYear={onSetYear} />
+      <ExpireDate month={month} year={year} isSubmited={isSubmited}>
+        <MonthInput
+          month={month}
+          onSetMonth={onSetMonth}
+          isSubmited={isSubmited}
+        />
+        <YearInput year={year} onSetYear={onSetYear} isSubmited={isSubmited} />
       </ExpireDate>
 
-      <SecureKeyContainer secNum={secNum}>
-        <SecureKey secNum={secNum} onSetSecNum={onSetSecNum} />
+      <SecureKeyContainer secNum={secNum} isSubmited={isSubmited}>
+        <SecureKey
+          secNum={secNum}
+          onSetSecNum={onSetSecNum}
+          isSubmited={isSubmited}
+        />
       </SecureKeyContainer>
     </>
   );
