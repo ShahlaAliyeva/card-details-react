@@ -1,6 +1,11 @@
 import React from "react";
 
-function SecureKey({ secNum, onSetSecNum, isSubmited}) {
+interface SecureKeyProps {
+  secNum: string;
+  onSetSecNum: Function;
+  isSubmited: boolean;
+}
+function SecureKey({ secNum, onSetSecNum, isSubmited }: SecureKeyProps) {
   return (
     <input
       name="secNum"
@@ -8,7 +13,7 @@ function SecureKey({ secNum, onSetSecNum, isSubmited}) {
       type="number"
       id="cvc"
       value={secNum}
-      onChange={onSetSecNum}
+      onChange={(e) => onSetSecNum(e)}
     />
   );
 }

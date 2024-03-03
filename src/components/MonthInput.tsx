@@ -1,7 +1,14 @@
-function MonthInput({ month, onSetMonth, isSubmited }) {
+import React from "react";
+
+interface MonthInputProps {
+  month: string;
+  onSetMonth: Function;
+  isSubmited: boolean;
+}
+
+function MonthInput({ month, onSetMonth, isSubmited }: MonthInputProps) {
   return (
     <input
-      // required
       className={!isSubmited || month ? "" : "validation"}
       type="number"
       placeholder="mm"
@@ -10,7 +17,7 @@ function MonthInput({ month, onSetMonth, isSubmited }) {
       id="expDate"
       name="month"
       value={month}
-      onChange={onSetMonth}
+      onChange={(e) => onSetMonth(e)}
     />
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import CreditCardInput from "../components/CreditCardInput";
 import CardHolderInput from "../components/CardHolderInput";
 import CardInfo from "../components/CardInfo";
@@ -11,6 +11,7 @@ import Form from "../components/Form";
 import InputLayout from "../components/InputLayout";
 
 const currYear = new Date().getFullYear().toString().substring(2);
+
 function MainPage() {
   const [isSubmited, setIsSubmitted] = useState(false);
 
@@ -31,7 +32,9 @@ function MainPage() {
       setForm({
         ...form,
         [e.target.name]:
-          Number(e.target.value) <= 12 ? Number(e.target.value) : "",
+          Number(e.target.value) <= 12 && e.target.value
+            ? Number(e.target.value)
+            : "",
       });
     }
 
@@ -79,7 +82,7 @@ function MainPage() {
       </SideBar>
       <Main>
         <Form onSetSubmit={handleSubmit}>
-          <InputLayout>
+          <InputLayout className="">
             <CardHolderInput
               onSetName={onChange}
               fullname={form.fullname}
@@ -87,7 +90,7 @@ function MainPage() {
             />
           </InputLayout>
 
-          <InputLayout>
+          <InputLayout className="">
             <CreditCardInput
               cardNumber={form.cardNumber}
               onSetNumber={onChange}

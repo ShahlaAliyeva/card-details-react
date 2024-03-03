@@ -1,4 +1,14 @@
-function CardHolderInput({ fullname, onSetName, isSubmited }) {
+import React from "react";
+
+function CardHolderInput({
+  fullname,
+  onSetName,
+  isSubmited,
+}: {
+  fullname: string;
+  onSetName: Function;
+  isSubmited: boolean;
+}) {
   return (
     <>
       <label htmlFor="fullName">Cardholder name</label>
@@ -6,7 +16,7 @@ function CardHolderInput({ fullname, onSetName, isSubmited }) {
         className={!isSubmited || fullname ? "" : "validation"}
         name="fullname"
         value={fullname}
-        onChange={onSetName}
+        onChange={(e) => onSetName(e)}
         type="text"
         id="fullName"
         placeholder="e. g. Jane Apleseed"

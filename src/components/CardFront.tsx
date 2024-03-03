@@ -1,6 +1,14 @@
+import React from "react";
 import cardLogo from "../assets/images/card-logo.svg";
 
-function CardFront({ fullname, cardNumber, month, year }) {
+interface CardFrontProps {
+  fullname: string;
+  cardNumber: string;
+  month: string;
+  year: string;
+}
+
+function CardFront({ fullname, cardNumber, month, year }: CardFrontProps) {
   return (
     <div className="card card__front__container">
       <div className="card__front__logo__container">
@@ -14,8 +22,12 @@ function CardFront({ fullname, cardNumber, month, year }) {
         <div className="user__and__expire__date__container">
           <p>{fullname || "Jane Apleseed"}</p>
           <p>
-            {month && month < 10 ? `0${month}` : month >= 10 ? month : "00"}/
-            {year ? year : "00"}
+            {month && Number(month) < 10
+              ? `0${month}`
+              : Number(month) >= 10
+              ? month
+              : "00"}
+            /{year ? year : "00"}
           </p>
         </div>
       </div>

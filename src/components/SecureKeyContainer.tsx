@@ -1,4 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
+
+interface SecureKeyContainerProps {
+  children: ReactNode;
+  secNum: string;
+  isSubmited: boolean;
+}
 
 function SecureKeyContainer({ children, secNum, isSubmited }) {
   return (
