@@ -1,13 +1,13 @@
-function YearInput({year, onSetYear, isSubmited}) {
+function YearInput({year, onSetYear, isSubmited, currYear}) {
   return (
     <input
-      // required
       className={!isSubmited || year ? "" : "validation"}
       type="number"
+      min={currYear}
       placeholder="yy"
-      name="exp-date"
+      name="year"
       value={year}
-      onChange={(e) => onSetYear(Number(e.target.value))}
+      onChange={onSetYear}
     />
   );
 }

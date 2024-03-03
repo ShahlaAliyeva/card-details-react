@@ -8,9 +8,9 @@ function MonthInput({ month, onSetMonth, isSubmited }) {
       max={12}
       min={1}
       id="expDate"
-      name="exp-date"
-      value={month < 11 ? `0${month}` : `${month}`}
-      onChange={(e) => onSetMonth(Number(e.target.value))}
+      name="month"
+      value={month}
+      onChange={onSetMonth}
     />
   );
 }

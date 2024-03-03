@@ -12,6 +12,7 @@ function CardInfo({
   secNum,
   onSetSecNum,
   isSubmited,
+  currYear
 }) {
   return (
     <>
@@ -21,7 +22,7 @@ function CardInfo({
           onSetMonth={onSetMonth}
           isSubmited={isSubmited}
         />
-        <YearInput year={year} onSetYear={onSetYear} isSubmited={isSubmited} />
+        <YearInput currYear={currYear} year={year} onSetYear={onSetYear} isSubmited={isSubmited} />
       </ExpireDate>
 
       <SecureKeyContainer secNum={secNum} isSubmited={isSubmited}>

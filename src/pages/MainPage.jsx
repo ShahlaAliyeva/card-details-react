@@ -6,50 +6,63 @@ import CardBack from "../components/CardBack";
 import CardFront from "../components/CardFront";
 import Main from "../components/Main";
 
-import React from "react";
 import SideBar from "../components/SideBar";
 import Form from "../components/Form";
 import InputLayout from "../components/InputLayout";
 
+const currYear = new Date().getFullYear().toString().substring(2);
 function MainPage() {
-  const [fullname, setFullname] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
-  const [secNum, setSecNum] = useState("");
   const [isSubmited, setIsSubmitted] = useState(false);
 
-  function handleFullname(e) {
-    setFullname(e.target.value);
-  }
+  const formDefaultInputs = {
+    fullname: "",
+    cardNumber: "",
+    month: "",
+    year: "",
+    secNum: "",
+  };
 
-  function handleCardNumber(e) {
-    setCardNumber(e.target.value);
-  }
+  const [form, setForm] = useState(formDefaultInputs);
 
-  function handleSetMonth(e) {
-    setMonth(() => (e <= 12 ? e : ""));
-  }
+  function onChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
 
-  function handleSetYear(e) {
-    setYear(() => (e <= 99 ? e : ""));
-  }
+    if (e.target.name === "month") {
+      setForm({
+        ...form,
+        [e.target.name]:
+          Number(e.target.value) <= 12 ? Number(e.target.value) : "",
+      });
+    }
 
-  function handleSetSecNum(e) {
-    if (e > 1000) return;
-    setSecNum(e);
+    if (e.target.name === "year") {
+      setForm({
+        ...form,
+        [e.target.name]:
+          Number(e.target.value) <= 99 && e.target.value
+            ? Number(e.target.value)
+            : "",
+      });
+    }
+
+    if (e.target.name === "secNum") {
+      setForm({
+        ...form,
+        [e.target.name]:
+          Number(e.target.value) <= 999 && e.target.value
+            ? Number(e.target.value)
+            : "",
+      });
+    }
   }
 
   function handleSubmit(e) {
+    const { fullname, cardNumber, month, year, secNum } = form;
     e.preventDefault();
     setIsSubmitted(true);
     if (!fullname || !cardNumber || !month || !year || !secNum) return;
 
-    setFullname("");
-    setCardNumber("");
-    setMonth("");
-    setYear("");
-    setSecNum("");
+    setForm(formDefaultInputs);
     setIsSubmitted(false);
   }
 
@@ -57,40 +70,41 @@ function MainPage() {
     <>
       <SideBar>
         <CardFront
-          fullname={fullname}
-          cardNumber={cardNumber}
-          month={month}
-          year={year}
+          fullname={form.fullname}
+          cardNumber={form.cardNumber}
+          month={form.month}
+          year={form.year}
         />
-        <CardBack secNum={secNum} />
+        <CardBack secNum={form.secNum} />
       </SideBar>
       <Main>
         <Form onSetSubmit={handleSubmit}>
           <InputLayout>
             <CardHolderInput
-              onSetName={handleFullname}
-              fullname={fullname}
+              onSetName={onChange}
+              fullname={form.fullname}
               isSubmited={isSubmited}
             />
           </InputLayout>
 
           <InputLayout>
             <CreditCardInput
-              cardNumber={cardNumber}
-              onSetNumber={handleCardNumber}
+              cardNumber={form.cardNumber}
+              onSetNumber={onChange}
               isSubmited={isSubmited}
             />
           </InputLayout>
 
           <InputLayout className="form__card__info">
             <CardInfo
-              month={month}
-              year={year}
-              onSetMonth={handleSetMonth}
-              onSetYear={handleSetYear}
-              secNum={secNum}
-              onSetSecNum={handleSetSecNum}
+              month={form.month}
+              year={form.year}
+              onSetMonth={onChange}
+              onSetYear={onChange}
+              secNum={form.secNum}
+              onSetSecNum={onChange}
               isSubmited={isSubmited}
+              currYear={currYear}
             />
           </InputLayout>
         </Form>

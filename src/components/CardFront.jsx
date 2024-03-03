@@ -14,7 +14,8 @@ function CardFront({ fullname, cardNumber, month, year }) {
         <div className="user__and__expire__date__container">
           <p>{fullname || "Jane Apleseed"}</p>
           <p>
-            {month ? month : "00"}/{year ? year : "00"}
+            {month && month < 10 ? `0${month}` : month >= 10 ? month : "00"}/
+            {year ? year : "00"}
           </p>
         </div>
       </div>

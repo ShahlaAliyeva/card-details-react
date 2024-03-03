@@ -3,8 +3,8 @@ function CardHolderInput({ fullname, onSetName, isSubmited }) {
     <>
       <label htmlFor="fullName">Cardholder name</label>
       <input
-        // required
         className={!isSubmited || fullname ? "" : "validation"}
+        name="fullname"
         value={fullname}
         onChange={onSetName}
         type="text"
