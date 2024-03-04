@@ -324,10 +324,18 @@ input.validation {
 }
 
 @media (max-width: 375px) {
-  .card {
+  html {
+    font-size: 13px;
+  }
+
+  .aside {
+    height: 30vh;
+  }
+
+  /* .card {
     width: 17rem;
     height: 10rem;
-  }
+  } */
 
   .card__front__container {
     top: 70%;
