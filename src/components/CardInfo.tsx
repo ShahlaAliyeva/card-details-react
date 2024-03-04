@@ -1,9 +1,6 @@
 import React from "react";
 import ExpireDate from "./ExpireDate";
-import MonthInput from "./MonthInput";
-import SecureKey from "./SecureKey";
-import SecureKeyContainer from "./SecureKeyContainer";
-import YearInput from "./YearInput";
+import Input from "./Input";
 
 interface CardInfoProps {
   onSetMonth: Function;
@@ -27,29 +24,40 @@ function CardInfo({
   currYear,
 }: CardInfoProps) {
   return (
-    <>
+    <div className="form__card__info">
       <ExpireDate month={month} year={year} isSubmited={isSubmited}>
-        <MonthInput
-          month={month}
-          onSetMonth={onSetMonth}
+        <Input
+          inputVal={month}
+          setFunc={onSetMonth}
           isSubmited={isSubmited}
+          placeholder="mm"
+          inputName="month"
+          inputType='number'
         />
-        <YearInput
-          currYear={currYear}
-          year={year}
-          onSetYear={onSetYear}
+        <Input
+          minVal={currYear}
+          inputVal={year}
+          setFunc={onSetYear}
           isSubmited={isSubmited}
+          placeholder="yy"
+          inputName="year"
+          inputType='number'
         />
       </ExpireDate>
 
-      <SecureKeyContainer secNum={secNum} isSubmited={isSubmited}>
-        <SecureKey
-          secNum={secNum}
-          onSetSecNum={onSetSecNum}
-          isSubmited={isSubmited}
-        />
-      </SecureKeyContainer>
-    </>
+      <Input
+        isSubmited={isSubmited}
+        inputVal={secNum}
+        setFunc={onSetSecNum}
+        labelFor="cvc"
+        inputName="secNum"
+        labelText="cvc"
+        inputType="number"
+        placeholder="000"
+        errorMessage="please write your cvc"
+      />
+    
+    </div>
   );
 }
 

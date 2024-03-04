@@ -9,8 +9,8 @@ interface ExpireDateProps {
 
 function ExpireDate({ children, year, month, isSubmited }: ExpireDateProps) {
   return (
-    <label htmlFor="expDate">
-      exp. date (mm/yy)
+    <div>
+      <label htmlFor="expDate">exp. date (mm/yy)</label>
       <div className="date__time__container">{children}</div>
       <span
         className={
@@ -19,7 +19,7 @@ function ExpireDate({ children, year, month, isSubmited }: ExpireDateProps) {
       >
         please write your expire date
       </span>
-    </label>
+    </div>
   );
 }
 

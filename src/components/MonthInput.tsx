@@ -12,8 +12,6 @@ function MonthInput({ month, onSetMonth, isSubmited }: MonthInputProps) {
       className={!isSubmited || month ? "" : "validation"}
       type="number"
       placeholder="mm"
-      max={12}
-      min={1}
       id="expDate"
       name="month"
       value={month}

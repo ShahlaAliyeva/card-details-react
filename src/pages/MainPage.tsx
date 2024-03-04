@@ -1,6 +1,4 @@
-import React,{ useState } from "react";
-import CreditCardInput from "../components/CreditCardInput";
-import CardHolderInput from "../components/CardHolderInput";
+import React, { useState } from "react";
 import CardInfo from "../components/CardInfo";
 import CardBack from "../components/CardBack";
 import CardFront from "../components/CardFront";
@@ -8,7 +6,7 @@ import Main from "../components/Main";
 
 import SideBar from "../components/SideBar";
 import Form from "../components/Form";
-import InputLayout from "../components/InputLayout";
+import Input from "../components/Input";
 
 const currYear = new Date().getFullYear().toString().substring(2);
 
@@ -82,34 +80,41 @@ function MainPage() {
       </SideBar>
       <Main>
         <Form onSetSubmit={handleSubmit}>
-          <InputLayout className="">
-            <CardHolderInput
-              onSetName={onChange}
-              fullname={form.fullname}
-              isSubmited={isSubmited}
-            />
-          </InputLayout>
+          <Input
+            isSubmited={isSubmited}
+            inputVal={form.fullname}
+            setFunc={onChange}
+            labelFor="fullname"
+            inputName="fullname"
+            labelText="Cardholder name"
+            inputType="text"
+            placeholder="e. g. Jane Apleseed"
+            errorMessage="please write your name"
+          />
 
-          <InputLayout className="">
-            <CreditCardInput
-              cardNumber={form.cardNumber}
-              onSetNumber={onChange}
-              isSubmited={isSubmited}
-            />
-          </InputLayout>
+          <Input
+            isInputMask={true}
+            inputVal={form.cardNumber}
+            setFunc={onChange}
+            isSubmited={isSubmited}
+            labelFor="cardNumber"
+            inputName="cardNumber"
+            labelText='card number'
+            mask='9999 9999 9999 9999'
+            placeholder="0000 0000 0000 0000"
+            errorMessage="please write your card number"
+          />
 
-          <InputLayout className="form__card__info">
-            <CardInfo
-              month={form.month}
-              year={form.year}
-              onSetMonth={onChange}
-              onSetYear={onChange}
-              secNum={form.secNum}
-              onSetSecNum={onChange}
-              isSubmited={isSubmited}
-              currYear={currYear}
-            />
-          </InputLayout>
+          <CardInfo
+            month={form.month}
+            year={form.year}
+            onSetMonth={onChange}
+            onSetYear={onChange}
+            secNum={form.secNum}
+            onSetSecNum={onChange}
+            isSubmited={isSubmited}
+            currYear={currYear}
+          />
         </Form>
       </Main>
     </>
