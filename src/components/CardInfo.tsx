@@ -1,17 +1,7 @@
 import React from "react";
 import ExpireDate from "./ExpireDate";
 import Input from "./Input";
-
-interface CardInfoProps {
-  onSetMonth: Function;
-  month: string;
-  year: string;
-  onSetYear: Function;
-  secNum: string;
-  onSetSecNum: Function;
-  isSubmited: boolean;
-  currYear: string;
-}
+import { ICardInfoProps } from "../models";
 
 function CardInfo({
   onSetMonth,
@@ -22,7 +12,7 @@ function CardInfo({
   onSetSecNum,
   isSubmited,
   currYear,
-}: CardInfoProps) {
+}: ICardInfoProps) {
   return (
     <div className="form__card__info">
       <ExpireDate month={month} year={year} isSubmited={isSubmited}>
@@ -33,6 +23,7 @@ function CardInfo({
           placeholder="mm"
           inputName="month"
           inputType='number'
+          labelFor="expDate"
         />
         <Input
           minVal={currYear}
@@ -56,7 +47,6 @@ function CardInfo({
         placeholder="000"
         errorMessage="please write your cvc"
       />
-    
     </div>
   );
 }

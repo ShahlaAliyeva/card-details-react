@@ -1,13 +1,10 @@
 import React, { ReactNode } from "react";
+import { IFormProps } from "../models";
 
-interface FormProps {
-  children: ReactNode;
-  onSetSubmit: Function;
-}
 
-function Form({ children, onSetSubmit }: FormProps) {
+function Form({ children, onSetSubmit }: IFormProps) {
   return (
-    <form onSubmit={(e) => onSetSubmit(e)}>
+    <form onSubmit={onSetSubmit}>
       {children}
       <button>confirm</button>
     </form>

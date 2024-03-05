@@ -1,13 +1,8 @@
 import React, { ReactNode } from "react";
+import { IExpireDateProps } from "../models";
 
-interface ExpireDateProps {
-  children: ReactNode;
-  year: string;
-  month: string;
-  isSubmited: boolean;
-}
 
-function ExpireDate({ children, year, month, isSubmited }: ExpireDateProps) {
+function ExpireDate({ children, year, month, isSubmited }: IExpireDateProps) {
   return (
     <div>
       <label htmlFor="expDate">exp. date (mm/yy)</label>

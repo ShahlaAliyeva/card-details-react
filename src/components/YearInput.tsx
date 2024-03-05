@@ -1,13 +1,7 @@
 import React from "react";
+import { IYearInputProps } from "../models";
 
-interface YearInputProps {
-  year: string;
-  onSetYear: Function;
-  isSubmited: boolean;
-  currYear: string;
-}
-
-function YearInput({ year, onSetYear, isSubmited, currYear }: YearInputProps) {
+function YearInput({ year, onSetYear, isSubmited, currYear }: IYearInputProps) {
   return (
     <input
       className={!isSubmited || year ? "" : "validation"}

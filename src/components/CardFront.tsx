@@ -1,14 +1,9 @@
 import React from "react";
 import cardLogo from "../assets/images/card-logo.svg";
+import { ICardFrontProps } from "../models";
 
-interface CardFrontProps {
-  fullname: string;
-  cardNumber: string;
-  month: string;
-  year: string;
-}
 
-function CardFront({ fullname, cardNumber, month, year }: CardFrontProps) {
+function CardFront({ fullname, cardNumber, month, year }: ICardFrontProps) {
   return (
     <div className="card card__front__container">
       <div className="card__front__logo__container">

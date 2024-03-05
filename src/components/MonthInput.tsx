@@ -1,12 +1,7 @@
 import React from "react";
+import { IMonthInputProps } from "../models";
 
-interface MonthInputProps {
-  month: string;
-  onSetMonth: Function;
-  isSubmited: boolean;
-}
-
-function MonthInput({ month, onSetMonth, isSubmited }: MonthInputProps) {
+function MonthInput({ month, onSetMonth, isSubmited }: IMonthInputProps) {
   return (
     <input
       className={!isSubmited || month ? "" : "validation"}

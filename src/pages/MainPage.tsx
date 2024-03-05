@@ -1,19 +1,30 @@
 import React, { useState } from "react";
+
 import CardInfo from "../components/CardInfo";
 import CardBack from "../components/CardBack";
 import CardFront from "../components/CardFront";
 import Main from "../components/Main";
-
 import SideBar from "../components/SideBar";
 import Form from "../components/Form";
 import Input from "../components/Input";
 
-const currYear = new Date().getFullYear().toString().substring(2);
+import {IMainPageForm} from '../models'
 
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+
+
+const currYear = new Date().getFullYear().toString().substring(2);
 function MainPage() {
+
+  const { register, handleSubmit, watch } = useForm<IMainPageForm>()
+  const onSubmit: SubmitHandler<IMainPageForm> = (data) => console.log(data)
+  console.log(watch('fullname'))
+
   const [isSubmited, setIsSubmitted] = useState(false);
 
-  const formDefaultInputs = {
+  const formDefaultInputs: IMainPageForm= {
     fullname: "",
     cardNumber: "",
     month: "",
@@ -57,15 +68,15 @@ function MainPage() {
     }
   }
 
-  function handleSubmit(e) {
-    const { fullname, cardNumber, month, year, secNum } = form;
-    e.preventDefault();
-    setIsSubmitted(true);
-    if (!fullname || !cardNumber || !month || !year || !secNum) return;
+  // function handleSubmit(e) {
+  //   const { fullname, cardNumber, month, year, secNum } = form;
+  //   e.preventDefault();
+  //   setIsSubmitted(true);
+  //   if (!fullname || !cardNumber || !month || !year || !secNum) return;
 
-    setForm(formDefaultInputs);
-    setIsSubmitted(false);
-  }
+  //   setForm(formDefaultInputs);
+  //   setIsSubmitted(false);
+  // }
 
   return (
     <>
@@ -79,7 +90,8 @@ function MainPage() {
         <CardBack secNum={form.secNum} />
       </SideBar>
       <Main>
-        <Form onSetSubmit={handleSubmit}>
+        <Form onSetSubmit={()=>handleSubmit(onSubmit)}>
+          {/* <input type="text" {...register('fullname')}/> */}
           <Input
             isSubmited={isSubmited}
             inputVal={form.fullname}
@@ -90,6 +102,7 @@ function MainPage() {
             inputType="text"
             placeholder="e. g. Jane Apleseed"
             errorMessage="please write your name"
+            register={register}
           />
 
           <Input
@@ -99,10 +112,11 @@ function MainPage() {
             isSubmited={isSubmited}
             labelFor="cardNumber"
             inputName="cardNumber"
-            labelText='card number'
-            mask='9999 9999 9999 9999'
+            labelText="card number"
+            mask="9999 9999 9999 9999"
             placeholder="0000 0000 0000 0000"
             errorMessage="please write your card number"
+            register={register}
           />
 
           <CardInfo

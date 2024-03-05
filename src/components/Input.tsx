@@ -1,21 +1,7 @@
 import React from "react";
 import InputMask from "react-input-mask";
+import { IInputProps } from "../models";
 
-interface InputProps {
-  isSubmited: boolean;
-  className: string;
-  inputVal: string;
-  setFunc: Function;
-  labelFor: string;
-  inputName: string;
-  labelText: string;
-  inputType: string;
-  placeholder: string;
-  isInputMask: boolean;
-  mask: string;
-  errorMessage: string;
-  minVal: string;
-}
 
 function Input({
   isSubmited,
@@ -31,7 +17,8 @@ function Input({
   mask = "",
   errorMessage,
   minVal = "",
-}: InputProps) {
+  register
+}: IInputProps) {
   return (
     <div className={className}>
       {labelText && <label htmlFor={labelFor}>{labelText}</label>}
@@ -46,6 +33,7 @@ function Input({
           value={inputVal}
           onChange={(e) => setFunc(e)}
           min={minVal}
+          // {...register(inputVal, { required: true})}
         />
       ) : (
         <input
@@ -56,6 +44,7 @@ function Input({
           type={inputType}
           id={labelFor}
           placeholder={placeholder}
+          // {...register(inputVal, { required: true})}
         />
       )}
 
