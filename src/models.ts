@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { RegisterOptions, FieldError, UseFormRegister } from "react-hook-form";
 
 export interface IMainPageForm {
   fullname: string;
@@ -24,6 +25,11 @@ export interface ICardInfoProps {
   onSetSecNum: Function;
   isSubmited: boolean;
   currYear: string;
+  register: UseFormRegister<any>;
+  // rules?: RegisterOptions;
+  monthError?: FieldError | undefined;
+  yearError?: FieldError | undefined;
+  secNumError?: FieldError | undefined;
 }
 
 export interface IExpireDateProps {
@@ -52,7 +58,9 @@ export interface IInputProps {
   mask: string;
   errorMessage: string;
   minVal: string;
-  register: object
+  register: UseFormRegister<any>;
+  rules?: RegisterOptions;
+  errors?: FieldError | undefined;
 }
 
 export interface IMonthInputProps {
@@ -62,8 +70,8 @@ export interface IMonthInputProps {
 }
 
 export interface IYearInputProps {
-    year: string;
-    onSetYear: Function;
-    isSubmited: boolean;
-    currYear: string;
-  }
+  year: string;
+  onSetYear: Function;
+  isSubmited: boolean;
+  currYear: string;
+}

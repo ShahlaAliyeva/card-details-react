@@ -2,9 +2,7 @@ import React from "react";
 import InputMask from "react-input-mask";
 import { IInputProps } from "../models";
 
-
 function Input({
-  isSubmited,
   className = "",
   inputVal,
   setFunc,
@@ -15,10 +13,12 @@ function Input({
   placeholder = "",
   isInputMask = false,
   mask = "",
-  errorMessage,
-  minVal = "",
-  register
+  register,
+  rules,
+  errors,
 }: IInputProps) {
+  // console.log(errors && errors[inputName]);
+
   return (
     <div className={className}>
       {labelText && <label htmlFor={labelFor}>{labelText}</label>}
@@ -26,35 +26,28 @@ function Input({
       {isInputMask ? (
         <InputMask
           id={labelFor}
-          name={inputName}
-          className={!isSubmited || inputVal ? "" : "validation"}
-          mask={mask}
-          placeholder={placeholder}
+          className={errors && errors[inputName] ? "validation" : ""}
           value={inputVal}
+          placeholder={placeholder}
+          {...register(inputName, rules)}
           onChange={(e) => setFunc(e)}
-          min={minVal}
-          // {...register(inputVal, { required: true})}
+          mask={mask}
         />
       ) : (
         <input
-          className={!isSubmited || inputVal ? "" : "validation"}
-          name={inputName}
+          id={labelFor}
+          className={errors && errors[inputName] ? "validation" : ""}
           value={inputVal}
+          placeholder={placeholder}
+          {...register(inputName, rules)}
           onChange={(e) => setFunc(e)}
           type={inputType}
-          id={labelFor}
-          placeholder={placeholder}
-          // {...register(inputVal, { required: true})}
         />
       )}
 
-      {errorMessage && (
-        <span
-          className={!isSubmited || inputVal ? "no_validate" : "validation"}
-        >
-          {errorMessage}
-        </span>
-      )}
+      <span className={errors && errors.message ? "validation" : "no_validate"}>
+        {errors && errors.message}{" "}
+      </span>
     </div>
   );
 }
