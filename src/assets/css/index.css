@@ -163,7 +163,7 @@ form {
 }
 
 .date__time__container {
-  flex-grow: 1;
+  min-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -222,6 +222,11 @@ span.no_validate {
 
 input.validation {
   border-color: var(--red);
+}
+
+label[for='cvc'] {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 1024px) {
