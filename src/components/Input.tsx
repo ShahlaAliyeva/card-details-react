@@ -1,53 +1,51 @@
 import React from "react";
 import InputMask from "react-input-mask";
 import { IInputProps } from "../models";
+import { useFormContext } from "react-hook-form";
 
 function Input({
   className = "",
-  inputVal,
-  setFunc,
-  labelFor = "",
   inputName,
   labelText = "",
   inputType,
   placeholder = "",
   isInputMask = false,
   mask = "",
-  register,
   rules,
-  errors,
 }: IInputProps) {
   // console.log(errors && errors[inputName]);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  
+  const errorMessage = errors?.[inputName]?.message;
+  
 
   return (
     <div className={className}>
-      {labelText && <label htmlFor={labelFor}>{labelText}</label>}
+      {labelText && <label htmlFor={inputName}>{labelText}</label>}
 
       {isInputMask ? (
         <InputMask
-          id={labelFor}
+          id={inputName}
           className={errors && errors[inputName] ? "validation" : ""}
-          value={inputVal}
           placeholder={placeholder}
           {...register(inputName, rules)}
-          onChange={(e) => setFunc(e)}
           mask={mask}
         />
       ) : (
         <input
-          id={labelFor}
+          id={inputName}
           className={errors && errors[inputName] ? "validation" : ""}
-          value={inputVal}
           placeholder={placeholder}
           {...register(inputName, rules)}
-          onChange={(e) => setFunc(e)}
           type={inputType}
         />
       )}
 
-      <span className={errors && errors.message ? "validation" : "no_validate"}>
-        {errors && errors.message}{" "}
-      </span>
+      {errorMessage && <span className="validation">{`${errorMessage}`}</span>}
     </div>
   );
 }

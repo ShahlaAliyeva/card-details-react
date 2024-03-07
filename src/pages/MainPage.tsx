@@ -11,61 +11,33 @@ import InputMask from "react-input-mask";
 
 import { IMainPageForm } from "../models";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 // import { zodResolver } from "@hookform/resolvers/zod";
 // import * as z from "zod";
 
 const currYear = new Date().getFullYear().toString().substring(2);
 function MainPage() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<IMainPageForm>();
-
   const onSubmit = (data: any) => {
     console.log(data);
   };
 
-  const formDefaultInputs: IMainPageForm = {
-    fullname: "",
-    cardNumber: "",
-    month: "",
-    year: "",
-    secNum: "",
-  };
+  const formMethods = useForm<IMainPageForm>();
 
-  const [form, setForm] = useState(formDefaultInputs);
-
-  function onChange(e: any) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    watch(e.target.name);
-  }
+  const { handleSubmit } = formMethods;
 
   return (
-    <>
+    <FormProvider {...formMethods}>
       <SideBar>
-        <CardFront
-          fullname={form.fullname}
-          cardNumber={form.cardNumber}
-          month={form.month}
-          year={form.year}
-        />
-        <CardBack secNum={form.secNum} />
+        <CardFront />
+        <CardBack />
       </SideBar>
       <Main>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
-            inputVal={form.fullname}
-            setFunc={onChange}
-            labelFor="fullname"
             inputName="fullname"
             labelText="Cardholder name"
             inputType="text"
             placeholder="e. g. Jane Apleseed"
-            register={register}
-            errors={errors.fullname}
             rules={{
               required: "This field is required",
               pattern: {
@@ -77,20 +49,14 @@ function MainPage() {
                 message: "Write your name correctly",
               },
             }}
-            
           />
 
           <Input
             isInputMask={true}
-            inputVal={form.cardNumber}
-            setFunc={onChange}
-            labelFor="cardNumber"
             inputName="cardNumber"
             labelText="card number"
             mask="9999 9999 9999 9999"
             placeholder="0000 0000 0000 0000"
-            register={register}
-            errors={errors.cardNumber}
             rules={{
               required: "This field is required",
               pattern: {
@@ -100,26 +66,19 @@ function MainPage() {
             }}
           />
 
-          {/* <CardInfo
-            month={form.month}
-            year={form.year}
-            onSetMonth={onChange}
-            onSetYear={onChange}
-            secNum={form.secNum}
-            onSetSecNum={onChange}
+          <CardInfo
+            month={"month"}
+            year={"year"}
             // isSubmited={isSubmited}
             currYear={currYear}
             register={register}
-            monthError={errors.month}
-            yearError={errors.year}
-            secNumError={errors.secNum}
             
-          /> */}
+          />
 
           <button>submit</button>
         </form>
       </Main>
-    </>
+    </FormProvider>
   );
 }
 

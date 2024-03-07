@@ -4,17 +4,8 @@ import Input from "./Input";
 import { ICardInfoProps } from "../models";
 
 function CardInfo({
-  onSetMonth,
-  month,
-  year,
-  onSetYear,
-  secNum,
-  onSetSecNum,
   currYear,
-  register,
-  monthError,
-  yearError,
-  secNumError,
+
 }: ICardInfoProps) {
   return (
     <div className="form__card__info">

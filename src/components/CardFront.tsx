@@ -1,9 +1,18 @@
 import React from "react";
 import cardLogo from "../assets/images/card-logo.svg";
-import { ICardFrontProps } from "../models";
+import { useFormContext } from "react-hook-form";
+import { IMainPageForm } from "../models";
 
+function CardFront() {
+  const { watch } = useFormContext<IMainPageForm>();
 
-function CardFront({ fullname, cardNumber, month, year }: ICardFrontProps) {
+  const [fullname, cardNumber, month, year] = watch([
+    "fullname",
+    "cardNumber",
+    "month",
+    "year",
+  ]);
+
   return (
     <div className="card card__front__container">
       <div className="card__front__logo__container">
