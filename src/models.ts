@@ -7,14 +7,6 @@ export interface IMainPageForm {
   year: string;
   secNum: string;
 }
-
-export interface ICardFrontProps {
-  fullname: string;
-  cardNumber: string;
-  month: string;
-  year: string;
-}
-
 export interface ICardInfoProps {
   onSetMonth: Function;
   month: string;
