@@ -11,7 +11,7 @@ function Input({
   placeholder = "",
   isInputMask = false,
   mask = "",
-  rules,
+  // valueAsNumber
 }: IInputProps) {
   const {
     register,
@@ -29,7 +29,7 @@ function Input({
           id={inputName}
           className={errors && errors[inputName] ? "validation" : ""}
           placeholder={placeholder}
-          {...register(inputName, rules)}
+          {...register(inputName)}
           mask={mask}
         />
       ) : (
@@ -37,7 +37,7 @@ function Input({
           id={inputName}
           className={errors && errors[inputName] ? "validation" : ""}
           placeholder={placeholder}
-          {...register(inputName, rules)}
+          {...register(inputName)}
           type={inputType}
         />
       )}

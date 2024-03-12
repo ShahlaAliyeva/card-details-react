@@ -36,7 +36,6 @@ export interface IExpireDateProps {
   children: ReactNode;
   year: string;
   month: string;
-  isSubmited: boolean;
 }
 
 export interface IFormProps {
@@ -52,7 +51,7 @@ export interface IInputProps {
   placeholder?: string;
   isInputMask?: boolean;
   mask?: string;
-  rules?: RegisterOptions;
+  // valueAsNumber?: boolean;
 }
 
 export interface IMonthInputProps {
