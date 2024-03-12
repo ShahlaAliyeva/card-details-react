@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Completed from "../components/Completed";
 
-const currYear = new Date().getFullYear().toString().substring(2);
+// const currYear = new Date().getFullYear().toString().substring(2);
 
 const CardDetailSchema = z.object({
   fullname: z
@@ -49,7 +49,12 @@ function MainPage() {
     resolver: zodResolver(CardDetailSchema),
   });
 
-  const { handleSubmit } = formMethods;
+  const { handleSubmit, reset } = formMethods;
+
+  function handleSubmitted() {
+    setIsSubmitted(false);
+    reset()
+  }
 
   return (
     <FormProvider {...formMethods}>
@@ -80,7 +85,7 @@ function MainPage() {
           </Form>
         </Main>
       ) : (
-        <Completed>completede</Completed>
+        <Completed onSetSubmit={handleSubmitted} />
       )}
     </FormProvider>
   );
