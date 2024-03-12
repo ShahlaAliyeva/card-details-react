@@ -45,13 +45,13 @@ export interface IFormProps {
 }
 
 export interface IInputProps {
-  className: string;
+  className?: string;
   inputName: string;
-  labelText: string;
-  inputType: string;
-  placeholder: string;
-  isInputMask: boolean;
-  mask: string;
+  labelText?: string;
+  inputType?: string;
+  placeholder?: string;
+  isInputMask?: boolean;
+  mask?: string;
   rules?: RegisterOptions;
 }
 

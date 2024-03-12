@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import CardInfo from "../components/CardInfo";
 import CardBack from "../components/CardBack";
@@ -7,7 +7,6 @@ import Main from "../components/Main";
 import SideBar from "../components/SideBar";
 import Form from "../components/Form";
 import Input from "../components/Input";
-import InputMask from "react-input-mask";
 
 import { IMainPageForm } from "../models";
 
@@ -32,7 +31,7 @@ function MainPage() {
         <CardBack />
       </SideBar>
       <Main>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSetSubmit={handleSubmit(onSubmit)}>
           <Input
             inputName="fullname"
             labelText="Cardholder name"
@@ -66,17 +65,8 @@ function MainPage() {
             }}
           />
 
-          <CardInfo
-            month={"month"}
-            year={"year"}
-            // isSubmited={isSubmited}
-            currYear={currYear}
-            register={register}
-            
-          />
-
-          <button>submit</button>
-        </form>
+          <CardInfo currYear={currYear} />
+        </Form>
       </Main>
     </FormProvider>
   );

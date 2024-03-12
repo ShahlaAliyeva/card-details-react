@@ -163,7 +163,7 @@ form {
 }
 
 .date__time__container {
-  min-width: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,7 +179,7 @@ form label {
   font-size: 0.9rem;
 }
 
-form input {
+form > div input {
   width: 100%;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -207,6 +207,8 @@ input:focus {
 }
 
 span {
+  display: inline-block;
+  width: 100%;
   font-size: 0.6rem;
   text-transform: lowercase;
 }
@@ -224,7 +226,7 @@ input.validation {
   border-color: var(--red);
 }
 
-label[for='cvc'] {
+label[for="cvc"] {
   display: flex;
   flex-direction: column;
 }

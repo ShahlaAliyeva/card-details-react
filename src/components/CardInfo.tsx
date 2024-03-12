@@ -1,24 +1,23 @@
 import React from "react";
 import ExpireDate from "./ExpireDate";
 import Input from "./Input";
-import { ICardInfoProps } from "../models";
+import { ICardInfoProps, IMainPageForm } from "../models";
+import { useFormContext } from "react-hook-form";
 
 function CardInfo({
   currYear,
 
 }: ICardInfoProps) {
+
+  const {watch} = useFormContext<IMainPageForm>()
+  const [month, year] = watch(['year', 'month'])
   return (
     <div className="form__card__info">
       <ExpireDate month={month} year={year}>
         <Input
-          inputVal={month}
-          setFunc={onSetMonth}
-          placeholder="mm"
           inputName="month"
+          placeholder="mm"
           inputType="number"
-          labelFor="expDate"
-          register={register}
-          errors={monthError}
           rules={{
             required: "this field is required",
             min: {
@@ -32,14 +31,9 @@ function CardInfo({
           }}
         />
         <Input
-          minVal={currYear}
-          inputVal={year}
-          setFunc={onSetYear}
           placeholder="yy"
           inputName="year"
           inputType="number"
-          register={register}
-          errors={yearError}
           rules={{
             required: "this field is required",
             min: {
@@ -55,14 +49,10 @@ function CardInfo({
       </ExpireDate>
 
       <Input
-        inputVal={secNum}
-        setFunc={onSetSecNum}
-        labelFor="cvc"
         inputName="secNum"
         labelText="cvc"
         inputType="number"
         placeholder="000"
-        errors={secNumError}
         rules={{
           required: "this field is required",
           min: {

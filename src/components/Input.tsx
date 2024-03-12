@@ -13,15 +13,12 @@ function Input({
   mask = "",
   rules,
 }: IInputProps) {
-  // console.log(errors && errors[inputName]);
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  
   const errorMessage = errors?.[inputName]?.message;
-  
 
   return (
     <div className={className}>
@@ -45,7 +42,9 @@ function Input({
         />
       )}
 
-      {errorMessage && <span className="validation">{`${errorMessage}`}</span>}
+      <span className={errorMessage ? "validation" : "no_validate"}>
+        {errorMessage ? `${errorMessage}` : "error message field"}
+      </span>
     </div>
   );
 }

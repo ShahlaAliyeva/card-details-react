@@ -6,7 +6,7 @@ function Form({ children, onSetSubmit }: IFormProps) {
   return (
     <form onSubmit={onSetSubmit}>
       {children}
-      <button>confirm</button>
+      <button>submit</button>
     </form>
   );
 }
