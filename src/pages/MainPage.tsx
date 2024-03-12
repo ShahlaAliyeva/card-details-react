@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import CardInfo from "../components/CardInfo";
 import CardBack from "../components/CardBack";
@@ -13,6 +13,7 @@ import { IMainPageForm } from "../models";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import Completed from "../components/Completed";
 
 const currYear = new Date().getFullYear().toString().substring(2);
 
@@ -40,8 +41,9 @@ const CardDetailSchema = z.object({
 type CardDetailSchemaType = z.infer<typeof CardDetailSchema>;
 
 function MainPage() {
-  const onSubmit: SubmitHandler<CardDetailSchemaType> = (data) =>
-    console.log(data);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const onSubmit: SubmitHandler<CardDetailSchemaType> = () =>
+    setIsSubmitted(true);
 
   const formMethods = useForm<CardDetailSchemaType>({
     resolver: zodResolver(CardDetailSchema),
@@ -55,26 +57,31 @@ function MainPage() {
         <CardFront />
         <CardBack />
       </SideBar>
-      <Main>
-        <Form onSetSubmit={handleSubmit(onSubmit)}>
-          <Input
-            inputName="fullname"
-            labelText="Cardholder name"
-            inputType="text"
-            placeholder="e. g. Jane Apleseed"
-          />
 
-          <Input
-            isInputMask={true}
-            inputName="cardNumber"
-            labelText="card number"
-            mask="9999 9999 9999 9999"
-            placeholder="0000 0000 0000 0000"
-          />
+      {!isSubmitted ? (
+        <Main>
+          <Form onSetSubmit={handleSubmit(onSubmit)}>
+            <Input
+              inputName="fullname"
+              labelText="Cardholder name"
+              inputType="text"
+              placeholder="e. g. Jane Apleseed"
+            />
 
-          <CardInfo />
-        </Form>
-      </Main>
+            <Input
+              isInputMask={true}
+              inputName="cardNumber"
+              labelText="card number"
+              mask="9999 9999 9999 9999"
+              placeholder="0000 0000 0000 0000"
+            />
+
+            <CardInfo />
+          </Form>
+        </Main>
+      ) : (
+        <Completed>completede</Completed>
+      )}
     </FormProvider>
   );
 }
