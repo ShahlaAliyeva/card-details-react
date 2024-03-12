@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Completed from "../components/Completed";
 
-// const currYear = new Date().getFullYear().toString().substring(2);
+const currYear = new Date().getFullYear().toString().substring(2);
 
 const CardDetailSchema = z.object({
   fullname: z
@@ -30,9 +30,28 @@ const CardDetailSchema = z.object({
     ),
   month: z
     .string()
-    .min(1, "Write month between 1-12")
-    .max(2, "Write month between 1-12"),
-  year: z.string().min(2, "Write correct year").max(2, "Write correct year"),
+    .refine((val) => !Number.isNaN(parseInt(val)), {
+      message: "This field is required",
+    })
+    .transform((month) => parseInt(month))
+    .pipe(
+      z
+        .number()
+        .min(1, "Write month between 1-12")
+        .max(12, "Write month between 1-12")
+    ),
+  year: z
+    .string()
+    .refine((val) => !Number.isNaN(parseInt(val)), {
+      message: "This field is required",
+    })
+    .transform((year) => parseInt(year))
+    .pipe(
+      z
+        .number()
+        .min(Number(currYear), "Write correct year")
+        .max(99, "Write correct year")
+    ),
   secNum: z
     .string()
     .min(1, "Write correct cvc number")
@@ -53,7 +72,7 @@ function MainPage() {
 
   function handleSubmitted() {
     setIsSubmitted(false);
-    reset()
+    reset();
   }
 
   return (
