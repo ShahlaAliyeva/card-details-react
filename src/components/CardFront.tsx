@@ -15,10 +15,12 @@ function CardFront() {
     "year",
   ]);
 
+  console.log(cardNumber);
+
   return (
     <Box
-      w={"20rem"}
-      h={"11rem"}
+      w={{ base: "15rem", sm: "21rem", lg: "22rem" }}
+      h={{ base: "9rem", sm:'11rem', lg: "12.3rem" }}
       borderRadius={"0.5rem"}
       boxShadow={"0px 0px 20px 0px rgba(0, 0, 0, 0.2)"}
       backgroundImage={bgImg}
@@ -27,6 +29,10 @@ function CardFront() {
       justifyContent={"space-between"}
       color={"#fff"}
       padding={"1rem"}
+      position={{ base: "absolute", lg: "static" }}
+      top={{base:'45%' ,sm: "55%" }}
+      left={{base:'10%', sm:'0'}}
+      zIndex={10}
     >
       <Box>
         <Image src={cardLogo} alt="card-logo" />

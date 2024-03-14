@@ -90,7 +90,7 @@ function MainPage() {
   return (
     <FormProvider {...formMethods}>
       <Box
-        display={"flex"}
+        display={{lg: "flex"}}
         height={"100vh"}
         width={"100%"}
         justifyContent={"space-between"}

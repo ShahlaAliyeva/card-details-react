@@ -10,18 +10,22 @@ function CardBack() {
   const secNum = watch("secNum");
   return (
     <Box
-      w={"20rem"}
-      h={"11rem"}
+      w={{ base: "15rem", sm: "21rem", lg: "22rem" }}
+      h={{ base: "9rem", sm: "11rem", lg: "12.3rem" }}
       borderRadius={"0.5rem"}
       boxShadow={"0px 0px 20px 0px rgba(0, 0, 0, 0.2)"}
       backgroundImage={bgImg}
       backgroundSize={"cover"}
       backgroundRepeat={"no-repeat"}
+      backgroundPosition={"center"}
       display={"flex"}
       flexDirection={"column"}
       justifyContent={"center"}
       alignSelf={"flex-end"}
       color={"#fff"}
+      position={{ base: "absolute", sm: "static" }}
+      top={{base:'10%', sm:'0'}}
+      right={{base:'10%', sm:'0'}}
     >
       <Text textAlign={"right"} marginRight={"2.4rem"} fontSize={"0.8rem"}>
         {secNum && Number(secNum) < 10

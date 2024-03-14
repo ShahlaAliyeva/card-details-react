@@ -4,12 +4,13 @@ import React, { ReactNode } from "react";
 function Main({ children }: { children: ReactNode }) {
   return (
     <Box
-      width={"50%"}
+      width={{base: "100%", sm:'80%' ,lg: "40%"}}
       display={"flex"}
       flexDirection={"column"}
       justifyContent={"center"}
       alignItems={"center"}
       padding={"2rem"}
+      margin={{base:'2rem auto', lg:0}}
     >
       {children}
     </Box>

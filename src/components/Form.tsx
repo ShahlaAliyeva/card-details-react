@@ -6,7 +6,7 @@ function Form({ children, onSetSubmit, isSubmitting }: IFormProps) {
   return (
     <form
       style={{
-        width: "60%",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         gap: "1.5rem",
