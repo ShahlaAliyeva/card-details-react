@@ -8,7 +8,7 @@
   font-weight: 500;
 }
 
-:root {
+/* :root {
   --black: hsl(0, 0%, 0%);
   --white: hsl(0, 0%, 100%);
   --red: hsl(0, 100%, 66%);
@@ -17,15 +17,7 @@
   --very-dark-violet: hsl(278, 68%, 11%);
   --linear-gradient-begin: hsl(249, 99%, 64%);
   --linear-gradient-end: hsl(278, 94%, 30%);
-}
-
-#root {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* overflow: hidden;
-  height: 100vh; */
-}
+} */
 
 html {
   font-size: 18px;
@@ -53,7 +45,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.aside {
+/* .aside {
   width: 30%;
   height: 100vh;
   background: url(../images/bg-main-desktop.png);
@@ -134,20 +126,20 @@ input::-webkit-inner-spin-button {
   text-align: right;
   margin-right: 2.4rem;
   font-size: 0.8rem;
-}
+} */
 
 /* main */
 
-.main__container {
+/* .main__container {
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-}
+} */
 
-form {
+/* form {
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -230,11 +222,11 @@ input.validation {
 label[for="cvc"] {
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* Completed page */
 
-.main__container.completed__page {
+/* .main__container.completed__page {
   gap: 1.4rem;
   width: 40%;
   padding: 3rem;
@@ -258,7 +250,7 @@ label[for="cvc"] {
 
 .main__container.completed__page button {
   margin-top: 1.3rem;
-}
+} */
 
 @media (max-width: 1024px) {
   .main__container {

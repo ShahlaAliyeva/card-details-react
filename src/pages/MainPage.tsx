@@ -6,7 +6,7 @@ import CardFront from "../components/CardFront";
 import Main from "../components/Main";
 import SideBar from "../components/SideBar";
 import Form from "../components/Form";
-import Input from "../components/Input";
+import CustomInput from "../components/CustomInput";
 
 import { IMainPageForm } from "../models";
 
@@ -14,6 +14,7 @@ import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Completed from "../components/Completed";
+import { Box } from "@chakra-ui/react";
 
 const currYear = new Date().getFullYear().toString().substring(2);
 
@@ -61,14 +62,25 @@ type CardDetailSchemaType = z.infer<typeof CardDetailSchema>;
 
 function MainPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const onSubmit: SubmitHandler<CardDetailSchemaType> = () =>
-    setIsSubmitted(true);
+  const onSubmit: SubmitHandler<CardDetailSchemaType> = () => {
+    return new Promise((resolve: any) => {
+      setTimeout(() => {
+        resolve();
+        setIsSubmitted(true);
+      }, 2000);
+    });
+  };
 
   const formMethods = useForm<CardDetailSchemaType>({
     resolver: zodResolver(CardDetailSchema),
   });
 
-  const { handleSubmit, reset } = formMethods;
+  const {
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = formMethods;
+
 
   function handleSubmitted() {
     setIsSubmitted(false);
@@ -77,35 +89,48 @@ function MainPage() {
 
   return (
     <FormProvider {...formMethods}>
-      <SideBar>
-        <CardFront />
-        <CardBack />
-      </SideBar>
+      <Box
+        display={"flex"}
+        height={"100vh"}
+        width={"100%"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
+        <SideBar>
+          <CardFront />
+          <CardBack />
+        </SideBar>
 
-      {!isSubmitted ? (
-        <Main>
-          <Form onSetSubmit={handleSubmit(onSubmit)}>
-            <Input
-              inputName="fullname"
-              labelText="Cardholder name"
-              inputType="text"
-              placeholder="e. g. Jane Apleseed"
-            />
+        {!isSubmitted ? (
+          <Main>
+            <Form
+              isSubmitting={isSubmitting}
+              onSetSubmit={handleSubmit(onSubmit)}
+            >
+              <CustomInput
+                inputName="fullname"
+                labelText="Cardholder name"
+                inputType="text"
+                placeholder="e. g. Jane Apleseed"
+                isInvalid={errors.fullname}
+              />
 
-            <Input
-              isInputMask={true}
-              inputName="cardNumber"
-              labelText="card number"
-              mask="9999 9999 9999 9999"
-              placeholder="0000 0000 0000 0000"
-            />
+              <CustomInput
+                isInputMask={true}
+                inputName="cardNumber"
+                labelText="card number"
+                mask="9999 9999 9999 9999"
+                placeholder="0000 0000 0000 0000"
+                isInvalid={errors.cardNumber}
+              />
 
-            <CardInfo />
-          </Form>
-        </Main>
-      ) : (
-        <Completed onSetSubmit={handleSubmitted} />
-      )}
+              <CardInfo errors={errors} />
+            </Form>
+          </Main>
+        ) : (
+          <Completed onSetSubmit={handleSubmitted} />
+        )}
+      </Box>
     </FormProvider>
   );
 }

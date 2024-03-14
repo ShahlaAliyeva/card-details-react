@@ -41,16 +41,18 @@ export interface IExpireDateProps {
 export interface IFormProps {
   children: ReactNode;
   onSetSubmit: Function;
+  isSubmitting: boolean
 }
 
 export interface IInputProps {
-  className?: string;
+  // className?: string;
   inputName: string;
   labelText?: string;
   inputType?: string;
   placeholder?: string;
   isInputMask?: boolean;
   mask?: string;
+  isInvalid?: any
   // valueAsNumber?: boolean;
 }
 
