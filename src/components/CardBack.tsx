@@ -30,7 +30,7 @@ function CardBack() {
     >
       <Text
         textAlign={"right"}
-        marginRight={{base: '1.9rem',md:"2.4rem"}}
+        marginRight={{base: '1.2rem',sm:"2.4rem"}}
         fontSize={{ base: ".7rem", md: "0.8rem" }}
       >
         {secNum && Number(secNum) < 10
