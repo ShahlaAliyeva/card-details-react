@@ -20,7 +20,7 @@ function CardFront() {
   return (
     <Box
       w={{ base: "15rem", sm: "21rem", lg: "22rem" }}
-      h={{ base: "9rem", sm:'11rem', lg: "12.3rem" }}
+      h={{ base: "9rem", sm: "11rem", lg: "12.3rem" }}
       borderRadius={"0.5rem"}
       boxShadow={"0px 0px 20px 0px rgba(0, 0, 0, 0.2)"}
       backgroundImage={bgImg}
@@ -30,22 +30,26 @@ function CardFront() {
       color={"#fff"}
       padding={"1rem"}
       position={{ base: "absolute", lg: "static" }}
-      top={{base:'45%' ,sm: "55%" }}
-      left={{base:'10%', sm:'0'}}
+      top={{ base: "45%", sm: "55%" }}
+      left={{ base: "10%", sm: "0" }}
       zIndex={10}
     >
       <Box>
-        <Image src={cardLogo} alt="card-logo" />
+        <Image
+          w={{ base: "4rem", md: "6rem" }}
+          src={cardLogo}
+          alt="card-logo"
+        />
       </Box>
 
       <Box display={"flex"} flexDirection={"column"} gap={"1.2rem"}>
         <Text
           display={"flex"}
           gap={"0.8rem"}
-          fontSize={"1.1rem"}
           justifyContent={"center"}
           alignItems={"center"}
           letterSpacing={"2px"}
+          fontSize={{ base: ".9rem", md: "1rem", lg:'1.1rem'}}
         >
           {cardNumber ? cardNumber : "0000 0000 0000 0000"}
         </Text>

@@ -5,13 +5,14 @@ import { Box, Button, Image, Text } from "@chakra-ui/react";
 function Completed({ onSetSubmit }: { onSetSubmit: Function }) {
   return (
     <Box
-      width={"40%"}
+      width={{base: '90%', lg: "40%"}}
       display={"flex"}
       flexDirection={"column"}
       justifyContent={"center"}
       alignItems={"center"}
       padding={"3rem"}
       gap={"1.4rem"}
+      margin={{base: '2rem auto',lg:'0'}}
     >
       <Image src={image} alt="complete_img" />
       <Text

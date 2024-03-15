@@ -9,7 +9,7 @@ function Main({ children }: { children: ReactNode }) {
       flexDirection={"column"}
       justifyContent={"center"}
       alignItems={"center"}
-      padding={"2rem"}
+      padding={{base: "2rem", md:'4rem'}}
       margin={{base:'2rem auto', lg:0}}
     >
       {children}

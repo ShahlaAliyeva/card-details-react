@@ -24,10 +24,15 @@ function CardBack() {
       alignSelf={"flex-end"}
       color={"#fff"}
       position={{ base: "absolute", sm: "static" }}
-      top={{base:'10%', sm:'0'}}
-      right={{base:'10%', sm:'0'}}
+      top={{ base: "10%", sm: "0" }}
+      right={{ base: "10%", sm: "0" }}
+      fontSize={{ base: ".9rem", md: "1rem" }}
     >
-      <Text textAlign={"right"} marginRight={"2.4rem"} fontSize={"0.8rem"}>
+      <Text
+        textAlign={"right"}
+        marginRight={{base: '1.9rem',md:"2.4rem"}}
+        fontSize={{ base: ".7rem", md: "0.8rem" }}
+      >
         {secNum && Number(secNum) < 10
           ? `00${secNum}`
           : Number(secNum) >= 10 && Number(secNum) <= 99
